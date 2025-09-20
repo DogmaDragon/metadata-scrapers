@@ -1,0 +1,18 @@
+name: "Test Performer Scraper"
+performerByURL:
+  - action: scrapeXPath
+    url:
+      - docs.stashapp.cc
+    scraper: performerScraper
+xPathScrapers:
+  performerScraper:
+    performer:
+      Name: //title
+      URLs: 
+        selector: //ul[@class='nav-list'][1]//a/@href
+        postProcess:
+          - replace:
+              - regex: ^
+                with: https://docs.stashapp.cc/
+
+# Last Updated June XX, 2020
